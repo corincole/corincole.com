@@ -1,0 +1,10 @@
+Sitemap: http://www.corincole.com/sitemap.xml
+User-agent: *
+Disallow: /?p=1
+Disallow: /?cat=1
+Disallow: /wp-trackback.php?p=9
+Disallow: /?p=9
+Disallow: /?p=1&cpage=1
+Allow: /
+Disallow: /?cat=4
+Disallow: /?cat=3

@@ -1,0 +1,25 @@
+---
+layout: post
+title: My Shiny New Blog Is Online
+category: thisblog
+metadesc: "Blog item by Corin Cole, introducing the new website/blog. Date Posted: 18/05/2010."
+metakeywords: "Corin Cole, gaming, marketing, advertising, PR, public relations, editorial, consultant, consultancy, journalist, esports journalist, heaven media, competitive gaming, esports, electronic sports"
+---
+
+h1. {{ page.title }}
+
+p(meta). 18 May 2010 - Oxford, UK
+
+I've always avoided blogging in the past because it's always seemed slightly time-wasting, slightly tedious, and frankly just a little self-centered.
+
+For the past year or so I've been an avid "twitter user":http://twitter.com/CorinCole (and still am), and as much as I love it, sometimes 140 characters just isn't enough to get an opinion across. Occasionally I'll write a column and get it published somewhere, but often I want to say something that needs more words than twitter can take, but isn't on a level to be properly published. And that's where this blog comes in.
+
+I probably won't use it very often, and I don't have any ambitions of building up a base of regular readers or anything - it's just a place for me to link to from my twitter account when I have something slightly more complex to express.
+
+If you enjoy reading what I write then that's awesome, and you could even grab my "RSS feed":/atom.xml, if you don't, that's OK too.
+
+I don't have any comments system on here, and I'll quote from my "post":/category_technical/this-blog-is-powered-by-jekyll.html about the software behind thiis blog as to why:
+
+I don't particularly want a comments section on this site. If you have any feedback you can tweet to me about it ("@Corincole":http://twitter.com/CorinCole), you can "email me":mailto:corin.c.cole@gmail.com, or you can write your own blog on the subject and send me a link to it.
+
+If you're interested in technical stuff, this site doesn't actually have any dynamic database-driven pages, and I've written more about that in my next post, <a href="/category_technical/this-blog-is-powered-by-jekyll.html">This Blog Is Powered By Jekyll</a>.

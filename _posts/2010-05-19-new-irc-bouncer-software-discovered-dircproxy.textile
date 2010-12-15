@@ -1,0 +1,61 @@
+---
+layout: post
+title: New IRC Bouncer Software Discovered (dircproxy)
+category: technical
+metakeywords: "Corin Cole, IRC, BNC, bouncer, software, sBNC, shroud, mIRC, XChat, irssi, dirc, dircproxy, proxy, Internet Relay Chat"
+---
+
+h1. {{ page.title }}
+
+p(meta). 19 May 2010 - Oxford, UK
+
+Having been an active IRC user since I was about 10 (originally on a private network with only a few hundred users, more recently on "Quakenet":http://www.quakenet.org/ and "Freenode":http://freenode.net/), I've used a fair bit of software in that area in the last decade.
+
+My favourite clients, having tried out a huge number, are:
+
+<ul>
+<li>Windows: "mIRC":http://www.mirc.com/ (originally hated this, and used Xchat for Windows, but eventually the scripting possibilities won me over, and I've all but forgotten about everything I hated)</li>
+<li>Linux GUI: "XChat":http://xchat.org/ (nothing amazingly special, just feels like a really comfortable fit - Windows version also available)</li>
+<li>Linux Shell: "Irssi":http://www.irssi.org/ or "BitchX":http://www.bitchx.com/ (not quite sure which I prefer, used both for years)</li>
+</ul>
+
+Hmm, having written then I think I might well un-install mIRC and replace it with XChat...
+
+Anyway, I've also got to know "UnrealIRCd":http://www.unrealircd.com/, a rather excellent IRC server (through becoming an IRCop and then network admin for the private network I mentioned), and also a number of clients not designed for direct user input, such as bots and bouncers.
+
+Over the years my favourite bouncer has been "shroudBNC":http://www.shroudbnc.info, with an excellent set of features, optional web panel, scripting, multiple users, and quite a bit more.
+
+However a couple of days ago I came across "dircproxy":http://code.google.com/p/dircproxy/, which, despite being a hardly-known of little-used piece of software, I've fallen in love with.
+
+The biggest feature improvement right from the off compared to sBNC is its logging methods, and its channel logging. Any time you're not connected to the server, everything said in any channel you're in will be saved and displayed when you next connect (along with, naturally, any private messages).
+
+It's highly customisable, and can also be used just as a proxy, with settings to have it disconnect from a server (or stay on the server to keep the nickname, but leave all channels) when you disconnect, and rejoin when you're back on.
+
+If you have a server to put it on, and use IRC, check it out, it's nice and easy to install!
+
+{% highlight bash %}
+#! /bin/bash
+$user="" # what user to install for?
+# 1.2.0-RC1 is the latest release, and I suspect it will also be the last release
+wget http://dircproxy.googlecode.com/files/dircproxy-1.2.0-RC1.tar.gz
+tar zxvf dircproxy-1.2.0-RC1.tar.gz
+cd dircproxy-1.2.0-RC1
+./configure
+make
+make install
+# I'm assuming an iptables firewall is in use
+iptables1="-I INPUT -p tcp --dport 57001 -m state --state NEW,ESTABLISHED -j ACCEPT"
+iptables2="-I OUTPUT -p tcp --sport 57001 -m state --state ESTABLISHED -j ACCEPT"
+echo $iptables1 >> /etc/iptables_rules
+echo $iptables2 >> /etc/iptables_rules
+iptables $iptables1
+iptables $iptables2
+cp /usr/local/share/dircproxy/dircproxyrc.sample /home/$user/.dircproxyrc
+chmod 700 /home/$user/.dircproxyrc
+su $user
+cd ~
+nano .dircproxyrc # edit config to your liking
+dircproxy # starts the software
+{% endhighlight %}
+
+Told you. Easy.

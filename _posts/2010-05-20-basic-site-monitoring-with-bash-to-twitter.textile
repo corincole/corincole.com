@@ -1,0 +1,31 @@
+---
+layout: post
+title: "Basic Site Monitoring With Bash (To Twitter)"
+category: technical
+metadesc: "Blog item by Corin Cole, a fairly pointless bash script to monitor a website with twitter notifications. Date Posted: 20/05/2010."
+metakeywords: "Corin Cole, website, monitoring, bash, unix, linux, twitter, offline, online"
+---
+
+h1. {{ page.title }}
+
+p(meta). 20 May 2010 - Oxford, UK
+
+For a while now I've been working on a full PHP-based website to monitor websites, whether they're online and so on, and at some point I'll post something on this site about the full planned features.
+
+Just to tease for now, it will include a live status page online for all the sites you are monitoring, with AJAX updates showing any new errors as and when they occur, without the need to reload the page. In terms of notifications, email, twitter, SMS and phone call will all be supported, and there's tonnes of other awesome features too.
+
+But until then, here's a monitoring trick that's rather enjoyably simple, to tweet whenever a site goes down - mainly written because I was a little bit bored.
+
+{% highlight bash %}
+#! /bin/bash
+result=$(wget -T 10 -t 1 http://www.google.com -O /dev/null -o /dev/stdout | grep "200 OK")
+if [ "$result" = "" ]; then
+  curl -d status="Google is offline!" https://twitter.com/statuses/update.xml --insecure --user USER:PASS &> /dev/null
+fi
+{% endhighlight %}
+
+And as a one liner to fit nicely as a cron job, that turns into:
+
+{% highlight bash %}
+if [ "$(wget -T 10 -t 1 http://www.google.com -O /dev/null -o /dev/stdout | grep '200 OK')" = "" ]; then curl -d status="Google is offline!" https://twitter.com/statuses/update.xml --insecure --user USER:PASS &> /dev/null; fi
+{% endhighlight %}

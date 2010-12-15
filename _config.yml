@@ -1,0 +1,8 @@
+markdown: rdiscount
+server: false
+pygments: true
+auto: false
+lsi: false
+permalink: /category-:categories/:title.html
+destination: /var/www/_sites/corin/corincole.com/
+exclude: template.textile jekyll.tar.gz

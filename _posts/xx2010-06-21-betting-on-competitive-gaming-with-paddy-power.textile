@@ -1,0 +1,23 @@
+---
+layout: post
+title: "Betting On Competitive Gaming with Paddy Power"
+category: gambling
+---
+
+h1. {{ page.title }}
+
+p(meta). 21 June 2010 - Oxford, UK
+
+Competitive gaming, or esports, is an area that I'm known for working in, as it's one of the three core areas of focus (along with hardware and casual gaming) for the company I work for, Heaven Media. But for the vast majority of people in the world, it's not a concept that makes any sense, yet alone one that they are familiar with.
+
+Despite the huge and swiftly growing number of gamers in the world (the games industry is the fastest growing entertainment industry, even ahead of the film industry, with last week's PricewaterhouseCoopers annual report predicting a global compoud growth rate of 10.6%), esports is still a very niche industry outside parts of Asia, but over the past decade it has seen a steady, albeit slow, growth.
+
+The most recent sign of esports moving towards being recognised as a legitimate sport? A major mainstream bookmaker offering genuine esports markets.
+
+Paddy Power is Ireland's largest bookmaker, and with 298 shops across Ireland and the United Kingdom, and a highly popular online service, they are also one of the European industry leaders. In April, as a test pilot, Paddy Power offered odds on the outright winner for the Steelseries Esport Challenge, a major Call of Duty tournament held in Copenhagen, and after the success of that trial I'm thrilled to be able to write that they are now expanding in the area, offering a greater range of markets on a handful of esports events over the coming few months.
+
+First up will be the Electronic Sports World Cup, one of the two biggest events to grace the esports calendar each year. Launching later today, Paddy Power will be offering a selection of markets on the ESWC Counter Strike tournament that takes place in Disneyland Paris at the end of June, including outright winner, forecast, each-way winner, group winners and name the finalists. More markets may arrive nearer the event, and certainly for other events in the future.
+
+Gaining this type of recognition from industries traditionally interested only in more conventional sports is a huge step for competitive gaming, and is surely a vital step in pushing further and further towards the goal of making both esports and more generally all video gaming more publicly and socially accepted.
+
+Here's to Paddy Power!

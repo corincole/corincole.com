@@ -1,0 +1,182 @@
+---
+layout: post
+title: "Adding Twitter To Static Jekyll Site Without Javascript"
+category: technical
+metadesc: "Blog item by Corin Cole, on how to implement your latest tweets into a static website without slowing loading times. Date Posted: 21/05/2010."
+metakeywords: "Corin Cole, Jekyll, twitter, static site, fast, bash, speed, loading, time, twitter feed, tweet"
+---
+
+h1. {{ page.title }}
+
+p(meta). 21 May 2010 - Oxford, UK
+
+As explained in <a href="http://www.corincole.com/category_technical/this-blog-is-powered-by-jekyll.html">this blog post</a>, I'm using Jekyll to run this website, which generates static HTML pages, with no server-side processing for the webserver.
+
+As great as that is, there are a couple of examples of issues it can cause:
+
+<ul><li>No database driven comments system without AJAX</li>
+<li>No inclusion of latest tweets (twitter) without AJAX</li></ul>
+
+I mentioned the comments issue in that last post, and as I said, it's not a feature I really want, so it doesn't bother me. Twitter, however, is another story.
+
+There are hundreds of javascript options for Twitter inclusion on a site, however I don't like that solution. It adds to the overall page loading time, and the content won't appear instantly with the rest of the page.
+
+One very simple option is to process all pages as PHP files, thus allowing you to use PHP code to bring in the twitter information. This would tell Apache to do that:
+
+{% highlight xml %}
+<Files *.html>
+ForceType application/x-httpd-php
+</Files>
+{% endhighlight %}
+
+The first issue here is that on a website not powered by PHP, will you neccesarily want PHP installed on the server? The louder argument against it, however, is that while it will still obviously be faster than having the entire site created by PHP from a database, running pages through PHP will slow it down a small amount.
+
+So, the ideal solution is to create a script that runs regularly and writes the information directly into the HTML pages, so that they then load just as fast as they normally would.
+
+This could be done in pretty much any language, and perhaps once I'm more familiar with Ruby I'll take a shot at building it into Jekyll directly, but for now I've chosen to use bash script, simply because it avoids having any other new software on the server.
+
+First off we want to grab the one most recent tweet from Twitter, and while a username/password is only required if your feed is private, I've included it as it does no harm.
+
+{% highlight bash %}
+#! /bin/bash
+xml=$(curl -s --basic --user USER:PASS http://twitter.com/statuses/user_timeline/26727250.rss?count=1)
+{% endhighlight %}
+
+After that we grab the date, link, and the tweet itself from the XML. This is a little bit complex for two reasons:
+
+<ul><li>The need to parse XML and grab the correct data from it</li>
+<li>"Description" and "Link" are both used to describe the general feed, so we need to only grab correct instance where they are used to describe the actual tweet.</li></ul>
+
+{% highlight bash %}
+#! /bin/bash
+date=$(grep pubDate <<< "$xml" | tr -d '\t' | sed 's/^<.*>\([^<].*\)<.*>$/\1/' | sed 's/<pubDate>//' | sed 's/<\/pubDate>//' | sed 's/^ //g')
+desc=$(awk -v "tag=description" '$0 ~ tag && a++ { print; exit }' <<< "$xml" | tr -d '\t' | sed 's/^<.*>\([^<].*\)<.*>$/\1/' | sed 's/<description>//' | sed 's/<\/description>//' | sed 's/CorinCole: //' | sed 's/^ //g')
+link=$(awk -v "tag=link" '$0 ~ tag && 2 ==   a++ { print; exit }' <<< "$xml" | tr -d '\t' | sed 's/^<.*>\([^<].*\)<.*>$/\1/' | sed 's/<link>//' | sed 's/<\/link>//' | sed 's/^ //g')
+{% endhighlight %}
+
+Then we want to read the date and time, and convert it into the format of our choice, which will be DD/MM/YYYY HH/MM.
+
+{% highlight bash %}
+#! /bin/bash
+date=$(date --utc --date "$date" +"%d/%m/%Y %H:%M")
+{% endhighlight %}
+
+Let's remove the whitespace that the XML file put in front of the lines...
+
+{% highlight bash %}
+#! /bin/bash
+read  -rd '' desc <<< "$desc"
+read  -rd '' link <<< "$link"
+{% endhighlight %}
+
+Finally, we want to search/replace within the index.hmtl file to update to the newest information. To do this I've written in <span></span> tags to my Liquid template that this script can put the data into, having assigned them the correct IDs.
+
+As well as updating the live page, I also update the template itself (I have both on the same server), this way if I then make changes and tell Jekyll to update files, the tweet will still be there.
+
+{% highlight bash %}
+#! /bin/bash
+for file in "/var/www/_sites/corin/corincole.com/index.html" "/home/corin/jekyll/corincole.com/index.html"
+do
+  perl -pi -e 'BEGIN { $x = shift; $y = shift; } s/$x/$y/g' -- "<span id=\"twit_message\">.*</span>" "<span id=\"twit_message\"><i>$desc</i></span>" $file
+  perl -pi -e 'BEGIN { $x = shift; $y = shift; } s/$x/$y/g' -- "<span class=\"twittersmall\" id=\"twit_time\">.*</span>" "<span class=\"twittersmall\" id=\"twit_time\">$date UTC</span>" $file
+  perl -pi -e 'BEGIN { $x = shift; $y = shift; } s/$x/$y/g' -- "<span class=\"twittersmall\" id=\"twit_link\">.*</span>" "<span class=\"twittersmall\" id=\"twit_link\"><a href=\"$link\">$link</a></span>" $file
+done
+{% endhighlight %}
+
+As you can see, I make the link clickable, I wrap the tweet in italic tags, and I've assigned a class to the link and the time so I can style it seperately in my CSS.
+
+And that's all there is to it! Combining the above gives you the complete script:
+
+{% highlight bash %}
+#! /bin/bash
+xml=$(curl -s --basic --user USER:PASS http://twitter.com/statuses/user_timeline/26727250.rss?count=1)
+date=$(grep pubDate <<< "$xml" | tr -d '\t' | sed 's/^<.*>\([^<].*\)<.*>$/\1/' | sed 's/<pubDate>//' | sed 's/<\/pubDate>//' | sed 's/^ //g')
+desc=$(awk -v "tag=description" '$0 ~ tag && a++ { print; exit }' <<< "$xml" | tr -d '\t' | sed 's/^<.*>\([^<].*\)<.*>$/\1/' | sed 's/<description>//' | sed 's/<\/description>//' | sed 's/CorinCole: //' | sed 's/^ //g')
+link=$(awk -v "tag=link" '$0 ~ tag && 2 ==   a++ { print; exit }' <<< "$xml" | tr -d '\t' | sed 's/^<.*>\([^<].*\)<.*>$/\1/' | sed 's/<link>//' | sed 's/<\/link>//' | sed 's/^ //g')
+date=$(date --utc --date "$date" +"%d/%m/%Y %H:%M")
+read  -rd '' desc <<< "$desc"
+read  -rd '' link <<< "$link"
+for file in "/var/www/_sites/corin/corincole.com/index.html" "/home/corin/jekyll/corincole.com/index.html"
+do
+  perl -pi -e 'BEGIN { $x = shift; $y = shift; } s/$x/$y/g' -- "<span id=\"twit_message\">.*</span>" "<span id=\"twit_message\"><i>$desc</i></span>" $file
+  perl -pi -e 'BEGIN { $x = shift; $y = shift; } s/$x/$y/g' -- "<span class=\"twittersmall\" id=\"twit_time\">.*</span>" "<span class=\"twittersmall\" id=\"twit_time\">$date UTC</span>" $file
+  perl -pi -e 'BEGIN { $x = shift; $y = shift; } s/$x/$y/g' -- "<span class=\"twittersmall\" id=\"twit_link\">.*</span>" "<span class=\"twittersmall\" id=\"twit_link\"><a href=\"$link\">$link</a></span>" $file
+done
+{% endhighlight %}
+
+The one step that remains is to automate the updates by adding it to crontab. I personally did this in the /etc/crontab file, but you could do this for a specific user's crontab if prefered.
+
+Updates every thirty minutes should be frequent enough, if not too frequent.
+
+{% highlight bash %}
+0,30 * * * * root /bin/bash /root/twitter.sh
+{% endhighlight %}
+
+Bingo - your Jekyll site now has twitter support without slowing down page loading times at all.
+
+Update: I've tweaked the code to ignore any replies (i.e. tweets beginning with an @), but to then check for an older tweet if the most recent one is a reply. I'll update the code once I've cleaned it up a little.
+
+Update 2: Here's my new code that loops through your last twenty tweets, finding the most recent non-reply.
+
+{% highlight bash %}
+#! /bin/bash
+xml=$(curl -s --basic --user USER:PASS http://twitter.com/statuses/user_timeline/26727250.rss?count=20)
+for i in {1..20}; do
+  case $i in
+    1)
+      date=$(grep -m 1 pubDate <<< "$xml" | tr -d '\t' | sed 's/^<.*>\([^<].*\)<.*>$/\1/' | sed 's/<pubDate>//' | sed 's/<\/pubDate>//' | sed 's/^ //g')
+      desc=$(awk -v "tag=description" '$0 ~ tag && a++ { print; exit }' <<< "$xml" | tr -d '\t' | sed 's/^<.*>\([^<].*\)<.*>$/\1/' | sed 's/<description>//' | sed 's/<\/description>//' | sed 's/CorinCole: //' | sed 's/^ //g')
+      link=$(awk -v "tag=link" '$0 ~ tag && 2 ==   a++ { print; exit }' <<< "$xml" | tr -d '\t' | sed 's/^<.*>\([^<].*\)<.*>$/\1/' | sed 's/<link>//' | sed 's/<\/link>//' | sed 's/^ //g')
+      date=$(date --utc --date "$date" +"%d/%m/%Y %H:%M")
+      read  -rd '' desc <<< "$desc"
+      read  -rd '' link <<< "$link" 
+      if [[ $desc != @* ]]; then
+        success="yes";
+        break
+      fi ;;
+    2)
+      date=$(awk -v "tag=pubDate" '$0 ~ tag && a++ { print; exit }' <<< "$xml" | tr -d '\t' | sed 's/^<.*>\([^<].*\)<.*>$/\1/' | sed 's/<pubDate>//' | sed 's/<\/pubDate>//' | sed 's/^ //g')
+      desc=$(awk -v "tag=description" '$0 ~ tag && 2 == a++ { print; exit }' <<< "$xml" | tr -d '\t' | sed 's/^<.*>\([^<].*\)<.*>$/\1/' | sed 's/<description>//' | sed 's/<\/description>//' | sed 's/CorinCole: //' | sed 's/^ //g')
+      link=$(awk -v "tag=link" '$0 ~ tag && 3 ==  a++ { print; exit }' <<< "$xml" | tr -d '\t' | sed 's/^<.*>\([^<].*\)<.*>$/\1/' | sed 's/<link>//' | sed 's/<\/link>//' | sed 's/^ //g')
+      date=$(date --utc --date "$date" +"%d/%m/%Y %H:%M")
+      read  -rd '' desc <<< "$desc"
+      read  -rd '' link <<< "$link"
+      if [[ $desc != @* ]]; then
+        success="yes";
+        break
+      fi ;;
+    *)
+      date=$(awk -v "tag=pubDate" -v "x=$((i-1))" '$0 ~ tag && x == a++ { print; exit }' <<< "$xml" | tr -d '\t' | sed 's/^<.*>\([^<].*\)<.*>$/\1/' | sed 's/<pubDate>//' | sed 's/<\/pubDate>//' | sed 's/^ //g')
+      desc=$(awk -v "tag=description" -v "i=$i" '$0 ~ tag && i == a++ { print; exit }' <<< "$xml" | tr -d '\t' | sed 's/^<.*>\([^<].*\)<.*>$/\1/' | sed 's/<description>//' | sed 's/<\/description>//' | sed 's/CorinCole: //' | sed 's/^ //g')
+      link=$(awk -v "tag=link" -v "x=$((i+1))" '$0 ~ tag && x == a++ { print; exit }' <<< "$xml" | tr -d '\t' | sed 's/^<.*>\([^<].*\)<.*>$/\1/' | sed 's/<link>//' | sed 's/<\/link>//' | sed 's/^ //g')
+      date=$(date --utc --date "$date" +"%d/%m/%Y %H:%M")
+      read  -rd '' desc <<< "$desc"
+      read  -rd '' link <<< "$link"
+      if [[ $desc != @* ]]; then
+        success="yes";
+        break
+      else
+        if [[ $i = 20 ]]; then
+          success="no";
+        fi
+      fi ;;
+  esac    
+done
+if [[ $success = "yes" ]]; then
+  desc=$(echo $desc | sed 's|[[:lower:]]\{1,\}://[^[:space:]]\{1,\}|<a href="&">&</a>|g ; s| \(www.[^[:space:]]*\)| <a href="\1">\1</a>|g')
+  for file in "/var/www/_sites/corin/corincole.com/index.html" "/home/corin/jekyll/corincole.com/index.html"
+  do
+    perl -pi -e 'BEGIN { $x = shift; $y = shift; } s/$x/$y/g' -- "<span id=\"twit_message\">.*</span>" "<span id=\"twit_message\"><i>$desc</i></span>" $file
+    perl -pi -e 'BEGIN { $x = shift; $y = shift; } s/$x/$y/g' -- "<span class=\"twittersmall\" id=\"twit_time\">.*</span>" "<span class=\"twittersmall\" id=\"twit_time\">$date UTC</span>" $file
+    perl -pi -e 'BEGIN { $x = shift; $y = shift; } s/$x/$y/g' -- "<span class=\"twittersmall\" id=\"twit_link\">.*</span>" "<span class=\"twittersmall\" id=\"twit_link\"><a href=\"$link\">$link</a></span>" $file
+  done 
+fi
+{% endhighlight %}
+
+Update 3: Added a line of code to make links clickable in tweets - thanks to Neil Moore for helping me with some regex issues! (Also added to full code above)
+
+{% highlight bash %}
+desc=$(echo $desc | sed 's|[[:lower:]]\{1,\}://[^[:space:]]\{1,\}|<a href="&">&</a>|g ; s| \(www.[^[:space:]]*\)| <a href="\1">\1</a>|g')
+{% endhighlight %}
+
+Perfect.

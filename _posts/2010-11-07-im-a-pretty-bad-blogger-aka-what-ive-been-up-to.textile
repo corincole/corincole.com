@@ -1,0 +1,25 @@
+---
+layout: post
+title: "I'm A Pretty Bad Blogger aka What I've Been Up To"
+category: personal
+---
+
+h1. {{ page.title }}
+
+p(meta). 07 November 2010 - Oxford, UK
+
+It's been a while since I posted anything on this blog. A really long time, in fact. After five posts in the three days after I put this new site online, I haven't written anything for almost half a year. I'm just pretty terrible at getting round to stuff.
+
+I haven't really been up to a huge amount since May. I've travelled a little, but nowhere near as much as I have in previous years. In 2009 I spent two hundred and sixty days away from home, around the UK, in Europe and in Asia. This year I spent a day and a half in Belgium (I went out to spend about five hours with number of German TV cameras pointed at me at an event in Atwerp), and I spent two weeks in the United States - the first of which was in Los Angeles, and the second in New York.
+
+I didn't get to be a tourist in LA at all, but I had a great time anyway. Admitedly, being twenty, my hotel (The Wilshire Grand) wouldn't serve me in the bar. Not even soft drinks. But the weather was fantastic (I flew out the day after they had the highest temperature ever recorded in that city), and it was boiling hot all week. Smoking outside the LA Convention Center, where I was working, in the bright sun, looking at the Hollywood sign in the distance... just felt amazing.
+
+Oh, while I'm on the subject of travel: a couple of weeks ago I had a sleepness night, and to fill the time before "waking up" for work I decided to work out where in the world I've actually visited. It's available as a list at <a href="http://www.corincole.com/misc/places_visited.txt">/misc/places_visited.txt</a>, or they're all marked on a map thanks to Google Maps, at <a href="http://goo.gl/MNhx">http://goo.gl/MNhx</a>. Check it out, I'm semi-impressed with myself.
+
+While not getting to many places, I have worked on some pretty cool stuff this year. I've worked with Irish bookmaker <a href="http://www.paddypower.com/">Paddy Power</a> to see them provide sports betting on competitive video gaming at a handful of events. I've worked with <a href="http://www.dell.co.uk">Dell</a> to create the <a href="http://www.alienwarechallenge.com/">Alienware Backpacking Challenge</a>, which saw us send four gamers backpacking around Europe for two months and blogging about their activities. I created a campaign for <a href="http://www.ea.com/">Electronic Arts</a> called 'Medal of Honor - Train Like A Tier 1 Operator' (you can watch the videos on YouTube <a href="http://www.youtube.com/watch?v=rCeZ3YrWxYU">here</a>, <a href="http://www.youtube.com/watch?v=d-FdvZkoK50">here</a> and <a href="http://www.youtube.com/watch?v=uVziHjj8JNc">here</a>). I created a few events for HMV's <a href="http://www.gamerbase.com">Gamerbase</a> brand, in London, Reading, Manchester and Glasgow.
+
+Plenty of other cool stuff has gone on as well, those are just the ones that spring to mind. I'm also working on some new campaigns for a few different companies which should prove to be pretty awesome, and I'm really excited about them. I guess... stay tuned to hear about them when we're ready to announce!
+
+Oh, and we've also confirmed our involvement in <a href="http://www.gadgetshowlive.net">Gadget Show Live 2011</a>. Heaven Media, the company I work for as Operations Manager, has created the Game Zone at each of the first two GSL events, and will be back for the third year in a row, this time with an ENTIRE HALL. That's pretty damn exciting, but it does mean a lot of hard work over the next five months.
+
+Nothing much else to say really, hopefully I'll find the energy to write here again sometime soon, rather than leaving it until the middle of next year.
