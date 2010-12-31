@@ -7,7 +7,15 @@ metakeywords: "Corin Cole, gaming, marketing, advertising, PR, public relations,
   <div id="home">
     <h1>Blog Posts</h1>
     <ul class="posts">
-{% for post in site.posts %}      <li><span>{{ post.date | date_to_string }}</span>&nbsp;&raquo;&nbsp;<a title="{{ post.title }}" href="{{ post.url }}">{{ post.title }}</a></li>
+{% for post in site.posts %}      <li>
+<span class="date">{{ post.date | date_to_string }}</span>
+&nbsp;&nbsp;
+<a title="{{ post.title }}" href="{{ post.url }}">{{ post.title }}</a>
+<br />
+<span class="excerpt">
+{{ post.excerpt }}
+</span>
+</li>
 {% endfor %}    </ul>
     <h1>About Me</h1>
     <p>I'm a 20 year old consultant who dabbles in a number of areas, including project and brand management, public relations, advertising campaigns, publishing and event management - and my work is mostly in the video games industry.</p>

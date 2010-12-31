@@ -178,8 +178,13 @@ ul.posts li,ul.externalposts li {
 line-height:1.75em;
 }
 
-ul.posts span,.twittersmall {
+.date,.twittersmall {
 color:#aaa;
 font-family:"monofur", "Courier New", monospace;
 font-size:80%;
+}
+
+.excerpt {
+display: block;
+padding-left: 7em;
 }

@@ -3,7 +3,8 @@ layout: post
 title: "Basic Site Monitoring With Bash (To Twitter)"
 category: technical
 metadesc: "Blog item by Corin Cole, a fairly pointless bash script to monitor a website with twitter notifications. Date Posted: 20/05/2010."
-metakeywords: "Corin Cole, website, monitoring, bash, unix, linux, twitter, offline, online"
+metakeywords: "Corin Cole, website, monitoring, bash, unix, linux, twitter, offline, online"        
+excerpt: "Just a random bash script I wrote to tweet when a website goes offline."
 ---
 
 h1. {{ page.title }}

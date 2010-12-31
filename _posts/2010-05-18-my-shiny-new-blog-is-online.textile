@@ -4,6 +4,7 @@ title: My Shiny New Blog Is Online
 category: thisblog
 metadesc: "Blog item by Corin Cole, introducing the new website/blog. Date Posted: 18/05/2010."
 metakeywords: "Corin Cole, gaming, marketing, advertising, PR, public relations, editorial, consultant, consultancy, journalist, esports journalist, heaven media, competitive gaming, esports, electronic sports"
+excerpt: "2010 seems quite late in the metaphorical day to start blogging, but... here I am."
 ---
 
 h1. {{ page.title }}

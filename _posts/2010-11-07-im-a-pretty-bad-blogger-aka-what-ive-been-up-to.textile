@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "I'm A Pretty Bad Blogger aka What I've Been Up To"
-category: personal
+category: personal    
+excerpt: "An update on my life and work, from June to November this year (2010)."
 ---
 
 h1. {{ page.title }}
