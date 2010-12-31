@@ -4,11 +4,14 @@ padding:0;
 }
 
 html,body {
-height:100%;
+min-height: 100%;
 }
 
 body {
-background-color:#FFF;
+/*background-color:#FFF;*/
+background-color: whitesmoke;
+/*background-position: center -18em;
+background-repeat: repeat-x;*/ 
 font:13.34px helvetica, arial, clean, sans-serif;
 font-size:small;
 text-align:center;
@@ -38,7 +41,15 @@ font-size:110%;
 text-align:justify;
 width:43em;
 line-height:1.5em;
-margin:3em auto 2em;
+margin:3em auto 2em auto;
+background: white;
+/* backwards-compatible thin grey border */
+padding: 3em 3em 1.5em 3em;
+border: 1px solid #ccc;
+/* CSS3 shadow */
+box-shadow: 2px 2px 8px #aaa;
+-webkit-box-shadow: 2px 2px 8px #aaa;
+-moz-box-shadow: 2px 2px 8px #aaa;
 }
 
 .title {
@@ -54,7 +65,8 @@ text-decoration:none;
 }
 
 .site .title a:hover {
-color:#000;
+/*color:#000;*/
+color:#fba919;
 }
 
 .site .title a.extra {
@@ -64,9 +76,17 @@ margin-left:1em;
 }
 
 .site .title a.extra:hover {
-color:#000;
+color:#F39;
 text-decoration:none;
 margin-left:1em;
+}
+
+.menuhover {
+color:#aaa;
+}
+
+.menuhover:hover {
+color:#aaa;
 }
 
 .site .meta {
