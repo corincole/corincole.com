@@ -3,6 +3,7 @@ layout: post
 title: "I'm A Pretty Bad Blogger aka What I've Been Up To"
 category: personal    
 excerpt: "An update on my life and work, from June to November this year (2010)."
+pageid: blog071110a
 ---
 
 h1. {{ page.title }}

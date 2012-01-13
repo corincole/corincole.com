@@ -5,6 +5,7 @@ category: technical
 metadesc: "Blog item by Corin Cole, on how to implement your latest tweets into a static website without slowing loading times. Date Posted: 21/05/2010."
 metakeywords: "Corin Cole, Jekyll, twitter, static site, fast, bash, speed, loading, time, twitter feed, tweet"  
 excerpt: "A slightly complex bash script to grab my latest tweet and place into this site."
+pageid: blog210510a
 ---
 
 h1. {{ page.title }}

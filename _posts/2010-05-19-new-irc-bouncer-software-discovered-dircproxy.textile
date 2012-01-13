@@ -4,6 +4,7 @@ title: New IRC Bouncer Software Discovered (dircproxy)
 category: technical
 metakeywords: "Corin Cole, IRC, BNC, bouncer, software, sBNC, shroud, mIRC, XChat, irssi, dirc, dircproxy, proxy, Internet Relay Chat"    
 excerpt: "I have discovered dircproxy, now my favourite IRC bouncer for its configurability."
+pageid: blog190510a
 ---
 
 h1. {{ page.title }}

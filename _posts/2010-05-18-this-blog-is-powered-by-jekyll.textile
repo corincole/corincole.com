@@ -5,6 +5,7 @@ category: technical
 metadesc: "Blog item by Corin Cole, looking at the software that makes the site so fast. Date Posted: 18/05/2010."
 metakeywords: "Corin Cole, blog, ruby, linux, Jekyll, liquid, pygments, server, software"  
 excerpt: "Jekyll is a lovely static site generator coded in Ruby."
+pageid: blog180510b
 ---
 
 h1. {{ page.title }}
