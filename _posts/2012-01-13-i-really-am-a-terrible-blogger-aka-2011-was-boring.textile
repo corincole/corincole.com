@@ -1,0 +1,25 @@
+---
+layout: post
+title: "I'm Really Am A Terrible Blogger AKA 2011 Was Boring"
+category: personal    
+excerpt: "A short overview of what I did in 2011."
+pageid: blog130112a
+---
+
+h1. {{ page.title }}
+
+p(meta). 13 January 2012 - Huntingdon, UK
+
+I know I said when I made this site, in my very first blog post, that "I probably won.t use it very often", but this is beyond a joke. I haven't written a single thing since November 2010, and I realised just how long it had been when the last two changes I'd made were both updates to my age, twelve months apart.
+
+2011 was a fun year, and I don't remember many moments of boredom, but at the same time looking back on it I can't think of a huge amount that happened.
+
+I did move away from Oxford for the first time in my life, and am now living in Huntingdon, Cambridgeshire - my flat is a fifteen minute walk from Heaven Media's offices, where I'm now based (I used to work from home). I'm not a huge fan of Huntingdon (nobody here is), but it's good to spend most days in the same building as my colleagues, and it's not too far from London so I don't hate being here.
+
+Last April we once again managed every aspect of the gaming hall at <a href="http://www.gadgetshowlive.net" title="Gadget Show Live">Gadget Show Live</a>, which grew in 2011 to see 104,975 visitors. We're already hard at work for this year's event, which will see more than 120,000 visitors, and our gaming area will fill more than 5,000 square metres.
+
+In October we also got a little involved in LITS, <a href="http://www.dennis.co.uk/" title="Dennis Publishing">Dennis Publishing</a>'s <a href="http://litshow.co.uk/ title="London International Technology Show">London International Technology Show</a>, where we created a small competitive gaming area for <a href="http://www.razerzone.com/" title="Razer">Razer</a>, in co-operation with the organisers of the event who had pushed to get us to bring this feature to the event. Despite our relatively small involvement, the week leading up to LITS was possibly my most stressful of the year, but those stories are for another time - in the end, all went smoothly!
+
+I'm hardly travelling at all any more, the highlight last year in this respect was five days in Los Angeles, a spur-of-the-moment holiday. On a boring Wednesday afternoon, two days before the start of the baseball season in America, I decided to take a few days off work and spend a long weekend in my favourite city, and catch the opening series (four games) of my team, the LA Dodgers. One of the things I love about my job is the flexibility to do stuff like this without advance planning, and I had a great time out there (even if the rest of the season was fairly miserable for the Dodgers).
+
+So there we go, 2011 in a nutshell. Nothing monumental happened, but I more or less enjoyed it. I've been back in the office for a fortnight now, after a relaxing three weeks off for Christmas, and if all goes to plan there's some really exciting stuff we'll be doing in 2012. Hopefully I'll have some interesting things to write about from the various projects we're working on this year, and hopefully my next update will come some time before next January. 
