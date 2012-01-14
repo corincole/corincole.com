@@ -12,7 +12,7 @@ h1. {{ page.title }}
 
 p(meta). 21 May 2010 - Oxford, UK
 
-As explained in <a href="http://www.corincole.com/category_technical/this-blog-is-powered-by-jekyll.html">this blog post</a>, I'm using Jekyll to run this website, which generates static HTML pages, with no server-side processing for the webserver.
+As explained in <a href="http://www.corincole.com/category-technical/this-blog-is-powered-by-jekyll.html">this blog post</a>, I'm using Jekyll to run this website, which generates static HTML pages, with no server-side processing for the webserver.
 
 As great as that is, there are a couple of examples of issues it can cause:
 
