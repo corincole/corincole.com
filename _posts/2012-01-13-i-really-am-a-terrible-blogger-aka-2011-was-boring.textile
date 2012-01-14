@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "I'm Really Am A Terrible Blogger AKA 2011 Was Boring"
+title: "I Really Am A Terrible Blogger aka 2011 Was Boring"
 category: personal    
 excerpt: "A short overview of what I did in 2011."
 pageid: blog130112a
