@@ -8,3 +8,4 @@ Disallow: /?p=1&cpage=1
 Allow: /
 Disallow: /?cat=4
 Disallow: /?cat=3
+Disallow: /test.html
