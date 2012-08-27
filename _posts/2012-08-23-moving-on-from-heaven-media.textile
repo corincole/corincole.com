@@ -1,0 +1,19 @@
+---
+layout: post
+title: "Moving On From Heaven Media"
+category: work
+excerpt: "Leaving my job after 5 years"
+pageid: blog230812a
+---
+
+h1. {{ page.title }}
+
+p(meta). 23 August 2012 - Huntingdon, UK
+
+At the end of September I will be leaving Heaven Media.
+
+Having joined the company four and a half years ago I've enjoyed this job immensely, but I now feel the time is right to move on and look for new challenges elsewhere.
+
+I'd like to thank everyone I've worked with over the years, both in and outside Heaven Media, and thank my colleagues and most of all Directors, for being supportive of my decision to move on.
+
+Corin

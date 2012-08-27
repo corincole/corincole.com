@@ -1,0 +1,26 @@
+---
+layout: post
+title: "Thoughts on GaymerCon"
+category: gaming
+excerpt: "Response to a Kickstarter project for a gay event"
+pageid: blog040812a
+---
+
+h1. {{ page.title }}
+
+p(meta). 4 August 2012 - Huntingdon, UK
+
+Kim Rom wrote on <a target="_blank" href="http://kimrom.tumblr.com/post/28648716034/a-kickstarter-for-gaymercon-everybody-games">his blog</a> about a <a target="_blank" href="http://www.kickstarter.com/projects/gaymercon/gaymercon-everybody-games">Kickstarter for GaymerCon</a>, an event built around LGBT gamers, and he doesn't understand the need for it. 
+
+<pre>"In my world we want to break down barriers. Not build them.
+
+"I would also not understand the meaning of a gaming convention for
+people with a certain skin color."</pre>
+
+I agree with Kim that GaymerCon isn't necessary for the reasons the event organisers give. Yes, homophobic slurs, and indeed (but to a lesser extent) homophobic peoplem, exist in gaming communities, but like Kim I think the solution to this is to work on improving the overall situation, not to accept the problem as unchangeable and segregate into gaymers and gamers.
+
+However there is a benefit to be hand from this event. I've always been open about my being gay, but of course plenty of people didn't know that - being open doesn't mean I've sent out press releases and worked to ensure everybody, everywhere has heard. A few months ago there was a forum thread on one of my company's websites about gay people in esports, and I raised my hand in there. Over the next few days a handful of gamers, most who I had never spoken to before, came out to me in private.
+
+More needs to be done to raise awareness that there are plenty of gay gamers out there, and that you don't need to be straight to fit in. In my years of playing games online, and also working in the games industry, not a single person has insulted me or treated me badly because of my sexuality. Not one.
+
+I may not agree with the concept of GaymerCon, but if it helps send a message to LGBT gamers that who they are is OK and that they are not alone, that feels like a win to me.
